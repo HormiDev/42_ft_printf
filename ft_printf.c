@@ -6,13 +6,11 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:53:20 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/02/28 17:10:58 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:58:58 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_print.h"
-
-char	*ft_itoa(int n);
 
 int	ft_conversion(char conv, void *arg)
 {
@@ -21,10 +19,8 @@ int	ft_conversion(char conv, void *arg)
 
 	if (conv == 'd')
 	{
-		str = ft_itoa((int) arg);
-		ft_printf(str);
+		ft_putnbr_base(arg,"0123456789", 10);
 	}
-
 	len = ft_strlen(str);
 	free(str);
 	return (len);
