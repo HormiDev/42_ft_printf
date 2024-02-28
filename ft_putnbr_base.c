@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:27:17 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/02/28 19:12:01 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:55:01 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,28 @@
 int	ft_putnbr_base(int n, char *base, int lenbase)
 {
 	long	nbr;
+	int		len;
 
 	nbr = n;
+	len = 0;
 	if (lenbase == 0)
 		lenbase = ft_strlen(base);
 	if (nbr < 0)
 	{
 		nbr = nbr * -1;
 		ft_putchar('-');
+		len++;
 	}
 	if (nbr > lenbase - 1)
 	{
-		ft_putnbr_base (nbr / lenbase, base, lenbase);
+		len = len + ft_putnbr_base (nbr / lenbase, base, lenbase);
 		nbr = nbr % lenbase;
 	}
 	ft_putchar(base[nbr]);
-	return (0);
+	len++;
+	return (len);
 }
 /*
-int	ft_putnbr_base(int n, char *base, int lenbase)
-{
-	if (lenbase == 0)
-		lenbase = ft_strlen(base);
-	if (n == -2147483648)
-		write(1, "-2147483648", 11);
-	else
-	{
-		if (n < 0)
-		{
-			n = n * -1;
-			ft_putchar('-');
-		}
-		if (n > lenbase - 1)
-		{
-			ft_putnbr_base (n / lenbase, base, lenbase);
-			n = n % lenbase;
-		}
-		ft_putchar(base[n]);
-	}
-	return (0);
-}
-*/
-
 #include <fcntl.h>
 
 int main()
@@ -68,3 +48,4 @@ int main()
 
 	return 0;
 }
+*/
