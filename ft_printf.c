@@ -6,22 +6,28 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:53:20 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/02/27 20:59:21 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:10:58 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdarg.h>
+#include "ft_print.h"
 
-
+char	*ft_itoa(int n);
 
 int	ft_conversion(char conv, void *arg)
 {
+	int		len;
+	char	*str;
+
 	if (conv == 'd')
-		{
-			printf(ft_itoa((int) arg));
-		}
-	return (0);
+	{
+		str = ft_itoa((int) arg);
+		ft_printf(str);
+	}
+
+	len = ft_strlen(str);
+	free(str);
+	return (len);
 }
 
 int	ft_printf(char const *str, ...)
