@@ -6,23 +6,20 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:53:20 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/02/28 20:58:58 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:17:22 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_print.h"
 
-int	ft_conversion(char conv, void *arg)
+int	ft_conversion(char conv, va_list arg)
 {
 	int		len;
-	char	*str;
 
 	if (conv == 'd')
 	{
-		ft_putnbr_base(arg,"0123456789", 10);
+		len = ft_putnbr_base(va_arg(arg, int), "0123456789", 10);
 	}
-	len = ft_strlen(str);
-	free(str);
 	return (len);
 }
 
@@ -32,7 +29,6 @@ int	ft_printf(char const *str, ...)
 	int		narg;
 	int		len;
 	va_list varg;
-	void	*arg;
 	
 	va_start(varg, str);
 	cont = 0;
@@ -40,10 +36,10 @@ int	ft_printf(char const *str, ...)
 	len = 0;
 	while (str[cont] != 0)
 	{
-		if (str[cont++] == '%')
+		if (str[cont] == '%')
 			{
-				arg = va_arg(varg, void *);
-				len = len + ft_conversion(str[cont++], arg);
+				cont++;
+				len = len + ft_conversion(str[cont++], varg);
 			}
 		write(1, &str[cont], 1);
 		cont++;
@@ -57,8 +53,8 @@ int	ft_printf(char const *str, ...)
 
 int main() {
     
-	printf("Hola mundo\n");
-	ft_printf("Hola mundo\n");
+	printf("Hola mundo %d\n", 10);
+	ft_printf("Hola mundo %d\n", 10);
     
     return 0;
 }
