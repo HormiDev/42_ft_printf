@@ -6,13 +6,13 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:27:17 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/02/29 16:27:32 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:08:02 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_print.h"
 
-int	ft_putnbr_base(int n, char *base, int lenbase)
+int	ft_putnbr_base(long n, char *base, int lenbase)
 {
 	long	nbr;
 	int		len;
