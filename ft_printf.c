@@ -6,23 +6,67 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:53:20 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/02/29 20:59:40 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/03/01 20:16:33 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_print.h"
 
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_strlen(const char *str)
+{
+	int	cont;
+
+	cont = 0;
+	while (str[cont] != 0)
+	{
+		cont++;
+	}
+	return (cont);
+}
+
+int	ft_putnbr_base(long n, char *base, int lenbase)
+{
+	long	nbr;
+	int		len;
+
+	nbr = n;
+	len = 0;
+	if (lenbase == 0)
+		lenbase = ft_strlen(base);
+	if (nbr < 0)
+	{
+		nbr = nbr * -1;
+		ft_putchar('-');
+		len++;
+	}
+	if (nbr > lenbase - 1)
+	{
+		len = len + ft_putnbr_base (nbr / lenbase, base, lenbase);
+		nbr = nbr % lenbase;
+	}
+	ft_putchar(base[nbr]);
+	len++;
+	return (len);
+}
+
 int	ft_conversion(char conv, va_list arg)
 {
 	int		len;
 
+	len = 0;
 	if (conv == 'c')
 		len = ft_putchar(va_arg(arg, int));
 	else if (conv == 's')
 		len = ft_printf(va_arg(arg, char *));
 	else if (conv == 'p')
-		len = ft_printf("0x") +
-		ft_putnbr_base(va_arg(arg, unsigned long long), "0123456789abcdef", 16);
+		len = ft_printf("0x")
+			+ft_putnbr_base(va_arg(arg, unsigned long), "0123456789abcdef", 16);
 	else if (conv == 'd' || conv == 'i')
 		len = ft_putnbr_base(va_arg(arg, int), "0123456789", 10);
 	else if (conv == 'u')
@@ -56,16 +100,13 @@ int	ft_printf(char const *str, ...)
 		}
 		else
 		{
-			len = len + ft_putchar(str[cont]);
-			cont++;
+			len = len + ft_putchar(str[cont++]);
 		}
 	}
 	va_end(varg);
 	return (len);
 }
-
-#include <stdio.h>
-
+/*
 int main() {
 	char *puntero;
 	
@@ -76,7 +117,8 @@ int main() {
 	ft_printf("| len %d\n", ft_printf("Hola mundo"));
 
 	printf("| len %d\n", printf("prueba char %c %c %c %c", 'H', 'o', 'l', 'a'));
-	ft_printf("| len %d\n", ft_printf("prueba char %c %c %c %c", 'H', 'o', 'l', 'a'));
+	ft_printf("| len %d\n", ft_printf
+	("prueba char %c %c %c %c", 'H', 'o', 'l', 'a'));
 
 	printf("| len %d\n", printf("prueba string %s %s", "Hola", "mundo"));
 	ft_printf("| len %d\n", ft_printf("prueba string %s %s", "Hola", "mundo"));
@@ -101,3 +143,4 @@ int main() {
     
     return 0;
 }
+*/

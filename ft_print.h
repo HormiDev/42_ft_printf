@@ -6,21 +6,17 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:04:17 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/02/29 20:08:21 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:33:26 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
+# include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
-# include <string.h>
 
-int	ft_putstr(char *s);
-int	ft_strlen(const char *str);
-int	ft_printf(char const *f, ...);
-int	ft_putnbr_base(long n, char *base, int lenbase);
-int	ft_putchar(char c);
+int		ft_printf(const char *str, ...);
 
 #endif
