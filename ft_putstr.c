@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.h                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 17:04:17 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/03/01 17:33:26 by ide-dieg         ###   ########.fr       */
+/*   Created: 2024/03/04 14:59:51 by ide-dieg          #+#    #+#             */
+/*   Updated: 2024/03/04 18:14:22 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_putstr(char *s)
+{
+	int	len;
 
-int		ft_printf(const char *str, ...);
-
-#endif
+	len = 6;
+	if (s != 0)
+	{
+		len = ft_strlen(s);
+		write(1, s, len);
+	}
+	else
+		write(1, "(null)", 6);
+	return (len);
+}

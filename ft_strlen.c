@@ -6,11 +6,11 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:15:46 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/02/28 18:53:14 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:15:08 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
+#include "ft_printf.h"
 
 int	ft_strlen(const char *str)
 {

@@ -6,33 +6,30 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:27:17 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/02/29 20:08:02 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:16:33 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_base(long n, char *base, int lenbase)
 {
-	long	nbr;
 	int		len;
 
-	nbr = n;
 	len = 0;
 	if (lenbase == 0)
 		lenbase = ft_strlen(base);
-	if (nbr < 0)
+	if (n < 0)
 	{
-		nbr = nbr * -1;
-		ft_putchar('-');
-		len++;
+		n = n * -1;
+		len = len + ft_putchar('-');
 	}
-	if (nbr > lenbase - 1)
+	if (n > (lenbase - 1))
 	{
-		len = len + ft_putnbr_base (nbr / lenbase, base, lenbase);
-		nbr = nbr % lenbase;
+		len = len + ft_putnbr_base (n / lenbase, base, lenbase);
+		n = n % lenbase;
 	}
-	ft_putchar(base[nbr]);
+	ft_putchar(base[n]);
 	len++;
 	return (len);
 }
