@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:53:20 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/03/06 11:47:52 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/03/06 13:23:39 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,33 @@ static int	ft_conversion(char conv, va_list arg)
 		len = ft_putchar('%');
 	return (len);
 }
+/**********************************DESCRIPCION**********************************
+La función 'ft_conversion' es una función auxiliar utilizada por 'ft_printf' 
+para manejar las conversiones especificadas en la cadena de formato. Esta 
+función toma un carácter de conversión y una lista de argumentos variables, y 
+devuelve la longitud de la cadena que se ha impreso.
+
+La función comienza inicializando la variable 'len' a 0. Esta variable se 
+utiliza para llevar la cuenta de la longitud de la cadena que se ha impreso.
+
+A continuación, la función entra en una serie de declaraciones if y else if 
+para verificar qué carácter de conversión se ha proporcionado. Si el carácter 
+de conversión es 'c', la función llama a 'ft_putchar' con el siguiente 
+argumento en la lista de argumentos variables (que se espera que sea un int) y 
+suma la longitud de la cadena impresa a 'len'.
+
+Si el carácter de conversión es 's', 'p', 'd' o 'i', 'u', 'x', 'X', la función 
+realiza una serie de operaciones similares, pero llamando a diferentes 
+funciones de impresión y pasando diferentes tipos de argumentos. En el caso de 
+'p', 'x' y 'X', también se pasa una cadena de caracteres que representa la base 
+en la que se debe imprimir el número.
+
+Si el carácter de conversión es '%', la función simplemente imprime un carácter 
+de porcentaje y suma 1 a 'len'.
+
+Finalmente, después de que se ha procesado el carácter de conversión, la 
+función devuelve la longitud total de la cadena que se ha impreso.
+*******************************************************************************/
 
 int	ft_printf(char const *str, ...)
 {
@@ -66,6 +93,34 @@ int	ft_printf(char const *str, ...)
 	va_end(varg);
 	return (len);
 }
+/**********************************DESCRIPCION**********************************
+La función 'ft_printf' es una implementación 'printf' de la biblioteca de C. 
+Esta función toma una cadena de formato y un número variable de argumentos, y 
+devuelve la longitud de la cadena que se ha impreso.
+
+La función comienza inicializando una lista de argumentos variables con la 
+macro 'va_start'. Luego, inicializa varias variables a 0: 'cont' para contar 
+los caracteres en la cadena de formato, 'narg' para contar los argumentos 
+(aunque no se usa en el código proporcionado), y 'len' para llevar la cuenta de 
+la longitud de la cadena que se ha impreso.
+
+A continuación, la función entra en un bucle que se ejecuta hasta que se 
+encuentra un carácter nulo en la cadena de formato. Dentro del bucle, la 
+función comprueba si el carácter actual es un signo de porcentaje '%'. Si es 
+así, incrementa 'cont' para pasar al siguiente carácter y llama a la función 
+'ft_conversion' con el carácter actual y la lista de argumentos variables. La 
+función 'ft_conversion' se encarga de manejar la conversión especificada por el 
+carácter actual y devuelve la longitud de la cadena que ha impreso. Esta 
+longitud se suma a 'len'.
+
+Si el carácter actual no es un signo de porcentaje '%', la función simplemente 
+imprime el carácter con la función 'ft_putchar' y suma la longitud de la cadena 
+impresa (que siempre será 1 en este caso) a 'len'.
+
+Finalmente, después de que se ha procesado toda la cadena de formato, la 
+función limpia la lista de argumentos variables con la macro 'va_end' y 
+devuelve la longitud total de la cadena que se ha impreso.
+*******************************************************************************/
 /*
 #include <stdio.h>
 #include <limits.h>
