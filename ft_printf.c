@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:53:20 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/03/06 13:23:39 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/05/05 20:11:02 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,11 @@ función devuelve la longitud total de la cadena que se ha impreso.
 int	ft_printf(char const *str, ...)
 {
 	int		cont;
-	int		narg;
 	int		len;
 	va_list	varg;
 
 	va_start(varg, str);
 	cont = 0;
-	narg = 0;
 	len = 0;
 	while (str[cont] != 0)
 	{
