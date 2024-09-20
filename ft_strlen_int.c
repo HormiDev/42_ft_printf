@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlen_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 12:15:46 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/03/04 16:15:08 by ide-dieg         ###   ########.fr       */
+/*   Created: 2024/09/20 23:52:50 by ide-dieg          #+#    #+#             */
+/*   Updated: 2024/09/20 23:52:56 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen_int(const char *str)
 {
 	int	cont;
 
@@ -24,7 +24,7 @@ int	ft_strlen(const char *str)
 	return (cont);
 }
 /**********************************DESCRIPCION**********************************
-La función 'ft_strlen' en el código C proporcionado es una implementación 
+La función 'ft_strlen_int' en el código C proporcionado es una implementación 
 personalizada de la función estándar de la biblioteca 'strlen' en C. Esta 
 función calcula la longitud de la cadena 'str'.
 
@@ -42,7 +42,7 @@ hasta que se encuentra el carácter nulo.
 
 Finalmente, la función devuelve 'cont', que es la longitud de la cadena 'str'.
 
-En resumen, 'ft_strlen' calcula y devuelve la longitud de una cadena, sin 
+En resumen, 'ft_strlen_int' calcula y devuelve la longitud de una cadena, sin 
 incluir el carácter nulo final.
 *******************************************************************************/
 /*
@@ -53,9 +53,9 @@ int main() {
     char str2[] = "Hola, mundo";
     char str3[] = "¿Como andamos?";
 
-    printf("'%s' %lu %lu\n", str1, strlen(str1), ft_strlen(str1));
-    printf("'%s' %lu %lu\n", str2, strlen(str2), ft_strlen(str2));
-    printf("'%s' %lu %lu\n", str3, strlen(str3), ft_strlen(str3));
+    printf("'%s' %lu %lu\n", str1, strlen(str1), ft_strlen_int(str1));
+    printf("'%s' %lu %lu\n", str2, strlen(str2), ft_strlen_int(str2));
+    printf("'%s' %lu %lu\n", str3, strlen(str3), ft_strlen_int(str3));
 
     return 0;
 }

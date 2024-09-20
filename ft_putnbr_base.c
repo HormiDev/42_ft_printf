@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 18:27:17 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/03/06 13:33:01 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/09/20 23:51:03 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putnbr_base(long n, char *base, int lenbase)
 
 	len = 0;
 	if (lenbase == 0)
-		lenbase = ft_strlen(base);
+		lenbase = ft_strlen_int(base);
 	if (n < 0)
 	{
 		n = n * -1;
@@ -43,7 +43,7 @@ La función comienza inicializando la variable 'len' a 0. Esta variable se
 utiliza para llevar la cuenta de la longitud de la cadena que se ha impreso.
 
 Si 'lenbase' es 0, la función calcula la longitud de la base llamando a la 
-función 'ft_strlen' con 'base' como argumento.
+función 'ft_strlen_int' con 'base' como argumento.
 
 Si 'n' es menor que 0, la función convierte 'n' en positivo multiplicándolo 
 por -1, imprime un carácter de guión '-' con la función 'ft_putchar', y suma la 

@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:59:51 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/03/06 13:34:53 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/09/20 23:51:16 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_putstr(char *s)
 	len = 6;
 	if (s != 0)
 	{
-		len = ft_strlen(s);
+		len = ft_strlen_int(s);
 		write(1, s, len);
 	}
 	else
@@ -36,7 +36,7 @@ utiliza para llevar la cuenta de la longitud de la cadena que se ha impreso.
 
 A continuación, la función comprueba si 's' es distinto de 0, es decir, si no 
 es un puntero nulo. Si 's' no es nulo, la función calcula la longitud de 's' 
-llamando a la función 'ft_strlen' y la guarda en 'len'. Luego, utiliza la 
+llamando a la función 'ft_strlen_int' y la guarda en 'len'. Luego, utiliza la 
 función de sistema 'write' para escribir la cadena en la salida estándar. El 
 primer argumento de 'write' es el descriptor de archivo que representa la 
 salida estándar, que es 1. El segundo argumento es la cadena que se va a 
