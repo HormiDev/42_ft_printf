@@ -6,7 +6,7 @@
 /*   By: ide-dieg <ide-dieg@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:53:20 by ide-dieg          #+#    #+#             */
-/*   Updated: 2024/05/05 20:11:02 by ide-dieg         ###   ########.fr       */
+/*   Updated: 2024/09/20 21:14:15 by ide-dieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,24 @@
 #define HEXA "0123456789ABCDEF"
 #define HEXA_MIN "0123456789abcdef"
 
+static int	ft_conversion2(char conv, va_list arg)
+{
+	int	len;
+
+	len = 0;
+	if (conv == 'x')
+		len = ft_putnbr_base(va_arg(arg, unsigned int), HEXA_MIN, 16);
+	else if (conv == 'X')
+		len = ft_putnbr_base(va_arg(arg, unsigned int), HEXA, 16);
+	else if (conv == '%')
+		len = ft_putchar('%');
+	return (len);
+}
+
 static int	ft_conversion(char conv, va_list arg)
 {
 	int		len;
+	void	*p;
 
 	len = 0;
 	if (conv == 'c')
@@ -25,18 +40,20 @@ static int	ft_conversion(char conv, va_list arg)
 	else if (conv == 's')
 		len = ft_putstr(va_arg(arg, char *));
 	else if (conv == 'p')
-		len = ft_printf("0x")
-			+ft_putnbr_base_p(va_arg(arg, unsigned long), HEXA_MIN, 16);
+	{
+		p = va_arg(arg, void *);
+		if (p == 0)
+			len = ft_putstr("(nil)");
+		else
+			len = ft_printf("0x")
+				+ft_putnbr_base_p((unsigned long)p, HEXA_MIN, 16);
+	}
 	else if (conv == 'd' || conv == 'i')
 		len = ft_putnbr_base(va_arg(arg, int), "0123456789", 10);
 	else if (conv == 'u')
 		len = ft_putnbr_base(va_arg(arg, unsigned int), "0123456789", 10);
-	else if (conv == 'x')
-		len = ft_putnbr_base(va_arg(arg, unsigned int), HEXA_MIN, 16);
-	else if (conv == 'X')
-		len = ft_putnbr_base(va_arg(arg, unsigned int), HEXA, 16);
-	else if (conv == '%')
-		len = ft_putchar('%');
+	else
+		len = ft_conversion2(conv, arg);
 	return (len);
 }
 /**********************************DESCRIPCION**********************************
@@ -124,7 +141,7 @@ devuelve la longitud total de la cadena que se ha impreso.
 #include <limits.h>
 
 int main() {
-	char *puntero;
+	char *puntero = "Hola mundo";
 	
     printf("Hola mundo\n");
 	ft_printf("Hola mundo\n");
@@ -157,9 +174,17 @@ int main() {
 	printf("| len %d\n", printf("prueba HEXADECIMAL %X", 42424242));
 	ft_printf("| len %d\n", ft_printf("prueba HEXADECIMAL %X", 42424242));
 
-	printf("| len %d\n", printf("%p", (void *)-14523));
-	ft_printf("| len %d\n", ft_printf("%p", (void *)-14523));
+	printf("| len %d\n", printf("prueba punteros %p", (void *)-14523));
+	ft_printf("| len %d\n", ft_printf("prueba punteros %p", (void *)-14523));
 
+	//printf("Cadena:%% % %s\n", "cadena");
+    //ft_printf("Puntero:%% % %s\n", "cadena");
+
+	printf("| len %d\n", printf
+	("prueba punteros nulos %p %p", (void *)0, (void *)0));
+	ft_printf("| len %d\n", ft_printf
+	("prueba punteros nulos %p %p", (void *)0, (void *)0));
     
     return 0;
-}*/
+}
+*/
